@@ -1,10 +1,13 @@
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import './CountryList.css';
 
 const GET_COUNTRIES = gql`
   query GetCountries {
     countries {
       name
       emoji
+      code
     }
   }
 `;
@@ -16,10 +19,11 @@ function CountryList() {
     if (error) return <p>Error :(</p>;
 
     return (
-        <div>
-            {data.countries.map(({ name, emoji }) => (
-                <div key={name}>
-                    {emoji} {name}
+        <div className="country-list">
+            {data.countries.map(country => (
+                <div key={country.code} className="country-item">
+                    <span className="country-emoji">{country.emoji}</span>
+                    <span className="country-name">{country.name}</span>
                 </div>
             ))}
         </div>

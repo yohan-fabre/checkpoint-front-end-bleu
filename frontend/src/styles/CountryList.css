@@ -1,0 +1,36 @@
+
+.countries-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 960px;
+}
+
+
+.country-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+.country-flag {
+    width: 20px;
+    height: auto;
+}
+
+
+.country-item span {
+    font-size: 16px;
+    color: #333;
+}

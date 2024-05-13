@@ -1,5 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
+import './CountryDetails.css';
 
 const GET_COUNTRY_DETAILS = gql`
   query GetCountryDetails($code: ID!) {
@@ -15,7 +16,7 @@ const GET_COUNTRY_DETAILS = gql`
 `;
 
 function CountryDetails() {
-    let { code } = useParams();
+    const { code } = useParams();
     const { data, loading, error } = useQuery(GET_COUNTRY_DETAILS, {
         variables: { code },
     });
@@ -24,10 +25,12 @@ function CountryDetails() {
     if (error) return <p>Error :(</p>;
 
     return (
-        <div>
-            <h1>{data.country.name} {data.country.emoji}</h1>
-            <p>Code: {data.country.code}</p>
-            <p>Continent: {data.country.continent.name}</p>
+        <div className="country-detail-container">
+            <img src={`https://flagcdn.com/w320/${data.country.code.toLowerCase()}.png`} alt={`Flag of ${data.country.name}`} className="country-flag" />
+            <div className="country-info">
+                <p>Name: {data.country.name} ({data.country.code})</p>
+                <p>Continent: {data.country.continent.name}</p>
+            </div>
         </div>
     );
 }
